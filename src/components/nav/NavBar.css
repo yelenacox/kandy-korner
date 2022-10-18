@@ -13,3 +13,6 @@
     margin-left: auto;
 }
 
+.navbar__link{
+    cursor: pointer;
+}

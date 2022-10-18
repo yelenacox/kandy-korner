@@ -1,0 +1,11 @@
+.products{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.product {
+    flex: 1 1;
+    padding: 20px 90px 20px 0;
+    font-size: 16px;
+    max-width: fit-content;
+}
