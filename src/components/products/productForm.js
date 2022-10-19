@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export const ProductForm = () => {
     const [product, update] = useState({
@@ -7,6 +8,7 @@ export const ProductForm = () => {
         productTypeId: ""
     })
 
+    const navigate = useNavigate()
     const saveButtonClick = (event) => {
         event.preventDefault()
 
@@ -24,6 +26,7 @@ export const ProductForm = () => {
         })
         .then(res => res.json())
         .then(() => {
+            navigate("/products")
         })
         
     }
@@ -82,7 +85,7 @@ export const ProductForm = () => {
                     onChange={
                         (evt) => {
                             const copy = { ...product }
-                            copy.productTypeId = parseInt(evt.target.value)
+                            copy.productTypeId = Number(evt.target.value)
                             update(copy)
                         }
                     }
