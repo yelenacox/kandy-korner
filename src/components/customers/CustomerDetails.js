@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 export const CustomerDetails = () => {
     const {customerId} = useParams()
     const [customer, updateCustomer] = useState({})
+    const navigate = useNavigate()
 
     useEffect(
         () => {
@@ -19,6 +20,12 @@ export const CustomerDetails = () => {
     return <section className="customer">
         <header className="customer__header">{customer?.user?.name}</header>
         <div>Email: {customer?.user?.email}</div>
-        <div>Loyalty number: {customer.loyaltyNumber}</div>
+        <div>Loyalty number: {customer.loyaltyNumber} 
+        <button
+                onClick={() => navigate(`/customers/${customer.id}/edit`)}
+                className="button_edit">
+                Update
+            </button></div>
+
     </section>
 }
