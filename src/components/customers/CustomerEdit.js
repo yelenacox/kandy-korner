@@ -28,7 +28,7 @@ export const CustomerEdit = () => {
         })
             .then(response => response.json())
             .then(() => {
-                // navigate("/customers")
+                navigate(`/customers/${customer.id}`)
             })
     }
 
@@ -46,9 +46,9 @@ export const CustomerEdit = () => {
                     onChange={
                         (evt) => {
                             const copy = { ...customer }
-                            copy.loyaltyNumber = evt.target.value
+                            copy.loyaltyNumber = parseInt(evt.target.value)
                             updateCustomer(copy)
-                            // TODO: Update state with a modified copy
+                            // TODO: Update state with a mod ified copy
                         }
                     }>{customer.loyaltyNumber}</textarea>
             </div>
