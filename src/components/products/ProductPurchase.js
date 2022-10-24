@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
 
-export const SaveButtonClick = (product, user, purchases, setPurchases) => {
+export const SaveButtonClick = (product, purchases, setPurchases) => {
 
+    const kandyUser = JSON.parse(localStorage.getItem("kandy_user"))
+console.log(kandyUser)
     for (const purchase of purchases) {
         if (purchase.productId === product.id) {
             return fetch(`http://localhost:8088/purchases/${purchase.id}`, {
@@ -10,7 +12,7 @@ export const SaveButtonClick = (product, user, purchases, setPurchases) => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    customerId: user.id,
+                    customerId: kandyUser.id,
                     productId: product.id,
                     numberPurchased: purchase.numberPurchased++
                 })
@@ -32,7 +34,7 @@ export const SaveButtonClick = (product, user, purchases, setPurchases) => {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            customerId: user.id,
+            customerId: kandyUser.id,
             productId: product.id,
             numberPurchased: 1
         })
