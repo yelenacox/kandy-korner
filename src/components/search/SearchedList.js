@@ -22,7 +22,7 @@ export const SearchedList = ( { searchTermState }) => {
                 return product.name.toLowerCase().startsWith(searchTermState.toLowerCase())
             })
             setFiltered(searchedProducts)
-        }, [searchTermState,]
+        }, [searchTermState, products]
     )
     
 
