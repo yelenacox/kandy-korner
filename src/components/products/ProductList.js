@@ -19,7 +19,7 @@ export const ProductList = ({ searchTermState }) => {
     useEffect(
         () => {
             const searchedProducts = products.filter(product => {
-                return product.name.toLowerCase().startsWith(searchTermState.toLowerCase())
+                return product.name?.toLowerCase().startsWith(searchTermState.toLowerCase())
             })
             setFiltered(searchedProducts)
         }, [searchTermState]
@@ -74,7 +74,7 @@ export const ProductList = ({ searchTermState }) => {
                             <div className="product_div">${product.price}</div>
                             <div className="product_div">{product.productType?.category}</div>
                             <button
-                                onClick={() => SaveButtonClick(product, user, purchases, setPurchases)}
+                                onClick={() => SaveButtonClick(product, purchases, setPurchases)}
                                 className="purchase_button"
                             >Purchase</button>
 
